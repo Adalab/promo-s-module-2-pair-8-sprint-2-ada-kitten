@@ -10,6 +10,7 @@ const buttonCancelForm = document.querySelector('.js-btn-cancel');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
+const inputRace = document.querySelector('.js-input-race');
 const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMessageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
@@ -60,7 +61,7 @@ function renderKittenList(kittenDataList) {
     listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
         listElement.innerHTML += renderKitten(kittenItem);
-    }
+    } 
 }
 
 //Mostrar/ocultar el formulario
@@ -82,14 +83,23 @@ function handleClickNewCatForm(event) {
 //Adicionar nuevo gatito
 function addNewKitten(event) {
     event.preventDefault();
-    const valueDesc = inputDesc.value;
-    const valuePhoto = inputPhoto.value;
-    const valueName = inputName.value;
-    if (valueDesc === "" && valuePhoto === "" && valueName === "") {
+    const newKittenDataObject = {
+        name: inputName.value,
+        desc: inputDesc.value,
+        photo: inputPhoto.value,
+        race: inputRace.value,
+    };
+    kittenDataList.push(newKittenDataObject);
+    inputDesc.value = "";
+    inputPhoto.value = "";
+    inputName.value = ""; 
+    inputRace.value = ""; 
+    renderKittenList(kittenDataList); 
+    if (newKittenDataObject.desc === "" && newKittenDataObject.photo === "" && newKittenDataObject.name === "" && newKittenDataObject.race === "") {
         labelMessageError.innerHTML = "¡Uy! parece que has olvidado algo";
     } else {
-        if (valueDesc !== "" && valuePhoto !== "" && valueName !== "") {
-            labelMessageError.innerHTML = "";
+        if (newKittenDataObject.desc !== "" && newKittenDataObject.photo !== "" && newKittenDataObject.name !== "" && newKittenDataObject.race !== "") {
+            labelMessageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
         }
     }
 }
@@ -99,7 +109,8 @@ function cancelNewKitten(event) {
     newFormElement.classList.add("collapsed");
     inputDesc.value = "";
     inputPhoto.value = "";
-    inputName.value = "";
+    inputName.value = ""; 
+    inputRace.value = "";
 }
 
 //Filtrar por descripción
@@ -114,7 +125,7 @@ function filterKitten(event) {
     }
 }
 
-//Mostrar el litado de gatitos en ell HTML
+//Mostrar el listado de gatitos en el HTML
 renderKittenList(kittenDataList);
 
 //Eventos
