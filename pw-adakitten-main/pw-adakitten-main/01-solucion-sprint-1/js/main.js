@@ -14,13 +14,13 @@ const inputRace = document.querySelector('.js-input-race');
 const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMessageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
-
+const input_search_race = document.querySelector ('.js_in_search_race');
 
 //Objetos con cada gatito
 const kittenData_1 = {
     image: "https://dev.adalab.es/gato-siames.webp",
     name: "Anastacio",
-    desc: "Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.",
+    desc: "Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asia al menos hace 500 años, donde tuvo su origen muy posiblemente.",
     race: "Siamés",
 };
 const kittenData_2 = {
@@ -95,10 +95,10 @@ function addNewKitten(event) {
     inputName.value = ""; 
     inputRace.value = ""; 
     renderKittenList(kittenDataList); 
-    if (newKittenDataObject.desc === "" && newKittenDataObject.photo === "" && newKittenDataObject.name === "" && newKittenDataObject.race === "") {
+    if (newKittenDataObject.desc === "" || newKittenDataObject.photo === "" || newKittenDataObject.name === "" || newKittenDataObject.race === "") {
         labelMessageError.innerHTML = "¡Uy! parece que has olvidado algo";
     } else {
-        if (newKittenDataObject.desc !== "" && newKittenDataObject.photo !== "" && newKittenDataObject.name !== "" && newKittenDataObject.race !== "") {
+        if (newKittenDataObject.desc !== "" || newKittenDataObject.photo !== "" || newKittenDataObject.name !== "" || newKittenDataObject.race !== "") {
             labelMessageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
         }
     }
@@ -114,16 +114,29 @@ function cancelNewKitten(event) {
 }
 
 //Filtrar por descripción
+//Haz un filter sobre el listado de gatitos
+//Haz un filter anidado sobre el listado de gatitos
+//queremos que la búsqueda no le afecten las mayúsculas
+//Vuelve a pintar el listado de gatitos filtrados en el HTML (renderKittenList (kittenListFiltered);
+//detrás de la flecha del segundo filtro como no queremos includes ponemos la variable === '' ||
 function filterKitten(event) {
     event.preventDefault();
-    const descrSearchText = input_search_desc.value;
+    const descrSearchText = input_search_desc.value.toLowerCase();
+    const raceSearchText= input_search_race.value.toLowerCase();
+    listElement.innerHTML = "";   
+    const kittenListFiltered = kittenDataList.filter((kitten) => kitten.desc.toLowerCase().includes(descrSearchText)).filter((kitten) => raceSearchText === '' || kitten.race.toLowerCase() === raceSearchText );
+    renderKittenList (kittenListFiltered);
+     
+}
+
+/*const descrSearchText = input_search_desc.value;
     listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
         if (kittenItem.desc.includes(descrSearchText)) {
             listElement.innerHTML += renderKitten(kittenItem);
         }
     }
-}
+}*/
 
 //Mostrar el listado de gatitos en el HTML
 renderKittenList(kittenDataList);

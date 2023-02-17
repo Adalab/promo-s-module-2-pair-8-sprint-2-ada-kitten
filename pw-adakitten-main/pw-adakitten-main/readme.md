@@ -39,62 +39,62 @@ La solución del ejercicio completo se subirá al final del módulo, si en una s
 #### 2.1 Intro a la programación:
 
 - [x] 1. Crea el proyecto
-- [ ] 2. Entiende el código html y css del proyecto
-- [ ] 3. **FORMULARIO:** Mostrar
+- [x] 2. Entiende el código html y css del proyecto
+- [x] 3. **FORMULARIO:** Mostrar
      formulario
-- [ ] 4. **LISTADO:** Listado: Mostrar gatitos desde JS
+- [x] 4. **LISTADO:** Listado: Mostrar gatitos desde JS
 
 #### 2.2 Intro a la programación 2:
 
-- [ ] 1. **LISTADO:** Mejora como se guarda la información
-- [ ] 2. **LISTADO - Bonus:** Nombre de gatitos en mayúsculas
+- [x] 1. **LISTADO:** Mejora como se guarda la información
+- [x] 2. **LISTADO - Bonus:** Nombre de gatitos en mayúsculas
 
 #### 2.3 Condicionales:
 
-- [ ] 1. **FILTRAR:** Búsqueda por descripción.
-- [ ] 2. **LISTADO - Bonus:**: ¿Y si no hay raza?.
+- [x] 1. **FILTRAR:** Búsqueda por descripción.
+- [x] 2. **LISTADO - Bonus:**: ¿Y si no hay raza?.
 
 #### 2.4 Eventos:
 
-- [ ] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
-- [ ] 2. **FORMULARIO:** Adicionar nuevo gatito.
-- [ ] 3. **FORMULARIO:** Cancelar formulario.
+- [x] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
+- [x] 2. **FORMULARIO:** Adicionar nuevo gatito.
+- [x] 3. **FORMULARIO:** Cancelar formulario.
 
 #### 2.5 Funciones I:
 
-- [ ] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
-- [ ] 2. **FORMULARIO:** Adicionar nuevo gatito.
-- [ ] 3. **LISTADO:** Crear el gatito en HTML
+- [x] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
+- [x] 2. **FORMULARIO:** Adicionar nuevo gatito.
+- [x] 3. **LISTADO:** Crear el gatito en HTML
 
 #### 2.6 Funciones II:
 
-- [ ] 1. **FORMULARIO:** Cancelar formulario.
-- [ ] 2. **FILTRAR:** Filtrar por descripción.
-- [ ] 3. **LISTADO - Bonus:**: ¿Y si no hay raza?.
-- [ ] 4. **BONUS:** Funciones dentro de funciones.
+- [x] 1. **FORMULARIO:** Cancelar formulario.
+- [x] 2. **FILTRAR:** Filtrar por descripción.
+- [x] 3. **LISTADO - Bonus:**: ¿Y si no hay raza?.
+- [x] 4. **BONUS:** Funciones dentro de funciones.
 
 #### 2.7 Objetos
 
-- [ ] 1. **LISTADO:** Convertir cada gatito en un objeto
+- [x] 1. **LISTADO:** Convertir cada gatito en un objeto
 
 #### 2.8 Arrays
 
-- [ ] 1. **LISTADO:** Crear listado de gatitos I
+- [x] 1. **LISTADO:** Crear listado de gatitos I
 
 #### 2.9 Bucles
 
-- [ ] 1. **LISTADO:** Crear listado de gatitos II
-- [ ] 2. **FILTRAR:**: Filtrar por descripción
+- [x] 1. **LISTADO:** Crear listado de gatitos II
+- [x] 2. **FILTRAR:**: Filtrar por descripción
 
 #### 2.11 Arrays II
 
-- [ ] 1. Conoce el trabajo de tu pareja
-- [ ] 2. **FORMULARIO:** Agregar un nuevo gatito al listado
+- [x] 1. Conoce el trabajo de tu pareja
+- [x] 2. **FORMULARIO:** Agregar un nuevo gatito al listado
 
 #### 2.12 Métodos funcionales de arrays
 
-- [ ] 1. **FILTRAR:** Filtrar por descripción
-- [ ] 2. **FILTRAR:** Filtrar por descripción y por raza
+- [x] 1. **FILTRAR:** Filtrar por descripción
+- [x] 2. **FILTRAR:** Filtrar por descripción y por raza
 
 #### 2.13 Peticiones al servidor I
 
