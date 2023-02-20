@@ -36,7 +36,7 @@ const kittenData_3 = {
     race: "Maine Coon",
 };
 
-const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+/* const kittenDataList = [kittenData_1, kittenData_2, kittenData_3]; */
 
 //Funciones
 function renderKitten(kittenData) {
@@ -56,6 +56,22 @@ function renderKitten(kittenData) {
     </li>`;
     return kitten;
 }
+
+const GITHUB_USER = 'lauramorenochico';
+const SERVER_URL = `https://dev.adalab.es/api/kittens/${GITHUB_USER}`;
+
+let kittenDataList = [];
+
+fetch(SERVER_URL, {
+  method: 'GET',
+  headers: {'Content-Type': 'application/json'},
+}).then((response) => response.json())
+.then((data) => {
+    console.log(data)
+    kittenDataList = data.results;
+    renderKittenList(kittenDataList);
+}
+);
 
 function renderKittenList(kittenDataList) {
     listElement.innerHTML = "";
