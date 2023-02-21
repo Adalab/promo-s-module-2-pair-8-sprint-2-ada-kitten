@@ -16,6 +16,7 @@ const labelMessageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const input_search_race = document.querySelector ('.js_in_search_race');
 
+
 //Objetos con cada gatito
 const kittenData_1 = {
     image: "https://dev.adalab.es/gato-siames.webp",
@@ -56,13 +57,18 @@ function renderKitten(kittenData) {
     </li>`;
     return kitten;
 }
-
+const kittenListStored = JSON.parse(localStorage.getItem('kittensList'));
 const GITHUB_USER = 'lauramorenochico';
 const SERVER_URL = `https://dev.adalab.es/api/kittens/${GITHUB_USER}`;
 
 let kittenDataList = [];
 
-fetch(SERVER_URL, {
+if (kittenListStored) {
+  kittenListStored=kittenDataList;
+  renderKittenList(kittenDataList);
+ 
+} else {
+  fetch(SERVER_URL, {
   method: 'GET',
   headers: {'Content-Type': 'application/json'},
 }).then((response) => response.json())
@@ -71,7 +77,14 @@ fetch(SERVER_URL, {
     kittenDataList = data.results;
     renderKittenList(kittenDataList);
 }
-);
+)
+ .catch((error) => {
+      console.error(error);
+    });
+}
+
+
+
 
 function renderKittenList(kittenDataList) {
     listElement.innerHTML = "";
@@ -97,19 +110,94 @@ function handleClickNewCatForm(event) {
     }
 }
 //Adicionar nuevo gatito
+
 function addNewKitten(event) {
     event.preventDefault();
+    
+    // Creamos objeto <- guardar llos campos del gatito
     const newKittenDataObject = {
         name: inputName.value,
         desc: inputDesc.value,
         photo: inputPhoto.value,
         race: inputRace.value,
     };
+
+    if (newKittenDataObject.desc === "" || newKittenDataObject.photo === ""|| newKittenDataObject.name === "" || newKittenDataObject.race === "") {
+        // No lo ha rellenado
+        labelMessageError.innerHTML = "¡Uy! parece que has olvidado algo";
+    }
+    else {
+        // Si que lo ha rellenado
+        // Mandar los datos al servidor
+         fetch(`https://dev.adalab.es/api/kittens/${GITHUB_USER}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newKittenDataObject),
+            })
+            .then(response => response.json())
+            .then(data => {
+                 if (data.success) {
+                    labelMessageError.innerHTML = 'Mola! Un nuevo gatito en Adalab!';
+                    // push
+                    kittenDataList.push(newKittenDataObject);
+            
+                    // renderGattios
+                    renderKittenList(kittenDataList); 
+            
+                    // Vaciar el formulario
+                    inputDesc.value = "";
+                    inputPhoto.value = "";
+                    inputName.value = ""; 
+                    inputRace.value = "";
+                 }
+                 else {
+                    labelMessageError.innerHTML = 'Ha habido un problema en el servidor';
+                 }
+
+            });
+
+
+    }
+}
+/*
+const newKittenDataObject = {
+        name: inputName.value,
+        desc: inputDesc.value,
+        photo: inputPhoto.value,
+        race: inputRace.value,
+    };
+function addNewKitten(event) {
+    event.preventDefault();
+ fetch(`https://dev.adalab.es/api/kittens/${GITHUB_USER}`, {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(newKittenDataObject),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.success) {
     kittenDataList.push(newKittenDataObject);
     inputDesc.value = "";
     inputPhoto.value = "";
     inputName.value = ""; 
     inputRace.value = ""; 
+    renderKittenList(kittenDataList); 
+      localStorage.setItem ('kitten', JSON.stringify(kittenDataList));
+      console.log (kittenDataList) 
+      //Agrega el nuevo gatito al listado
+      //Guarda el listado actualizado en el local stoarge
+      //Visualiza nuevamente el listado de gatitos
+      //Limpia los valores de cada input
+    } else {
+      //muestra un mensaje de error.
+    }
+  });
+    
+    /*kittenDataList.push(newKittenDataObject);
+    inputDesc.value = "";
+    inputPhoto.value = "";
+    inputName.value = ""; 
+    inputRace.value = ""; * /
     renderKittenList(kittenDataList); 
     if (newKittenDataObject.desc === "" || newKittenDataObject.photo === "" || newKittenDataObject.name === "" || newKittenDataObject.race === "") {
         labelMessageError.innerHTML = "¡Uy! parece que has olvidado algo";
@@ -119,6 +207,8 @@ function addNewKitten(event) {
         }
     }
 }
+*/
+
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
     event.preventDefault();
