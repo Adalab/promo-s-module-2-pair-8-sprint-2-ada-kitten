@@ -37,7 +37,6 @@ const kittenData_3 = {
     race: "Maine Coon",
 };
 
-
 //Funciones
 /* function renderKitten(kittenData) {
     const kitten = `<li class="card">
@@ -76,10 +75,14 @@ function renderKitten(kittenData) {
   const textForDesc = document.createTextNode(kittenData.desc);
 
   articleElement.appendChild(imgElement);
-  articleElement.appendChild(title);
-  articleElement.appendChild(raceTitle);
-  articleElement.appendChild(textForDesc);
+  articleElement.appendChild(h3NameElement);
+  h3NameElement.appendChild(title);
+  articleElement.appendChild(h3RaceElement);
+  h3RaceElement.appendChild(raceTitle);
+  articleElement.appendChild(pElement);
+  pElement.appendChild(textForDesc);
   liElement.appendChild(articleElement);
+  console.log(liElement);
 
   return liElement;
 }
@@ -114,7 +117,8 @@ if (kittenListStored) {
 function renderKittenList(kittenDataList) {
     listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
-        listElement.innerHTML += renderKitten(kittenItem);
+        const newLiItem = renderKitten(kittenItem);
+        listElement.appendChild(newLiItem);
     } 
 }
 
