@@ -58,7 +58,7 @@ const kittenData_3 = {
 
 function renderKitten(kittenData) {
   const liElement = document.createElement('li');
-  liElement.classList.add('list');
+  liElement.classList.add('card');
   const articleElement = document.createElement('article');
   const imgElement = document.createElement('img');
   imgElement.classList.add('card_img');
